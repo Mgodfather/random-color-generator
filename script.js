@@ -33,9 +33,11 @@ blueInput.addEventListener('input', (e) => {
 
 })
 
+let copyRgbColor;
+
 rgbColorBtn.addEventListener('click', (e) => {
 rgbContainer.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`
-
+copyRgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`
 
 if (redValue < 80 && greenValue < 80 && blueValue < 80) {
     rgbContainer.style.color = 'white'
@@ -44,14 +46,26 @@ if (redValue < 80 && greenValue < 80 && blueValue < 80) {
 }
 })
 
+function copyRgb() {
+    navigator.clipboard.writeText(copyRgbColor)
+}
+
+
+
 let letters = '0123456789ABCDEF'
 let hexColor = '#'
 
+let copyHexColor;
 hexColorBtn.addEventListener('click', () => {
     for (let i = 0; i < 6; i++) {
         hexColor += letters[Math.floor(Math.random() * 16)]
     }
     hexColorValue.innerHTML = hexColor
     hexContainer.style.backgroundColor = hexColor
+    copyHexColor = hexColor
     hexColor = '#'
 })
+
+function copyHex() {
+    navigator.clipboard.writeText(copyHexColor)
+}
